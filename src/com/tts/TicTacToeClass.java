@@ -20,17 +20,41 @@ public class TicTacToeClass
 
 	public boolean isWinner( char p )
 	{
-		return false;
+		//row wins
+		if(board[0][0] == p && board[0][1]==p && board[0][2] == p){
+			return true;
+		}else if(board[1][0] == p && board[1][1]==p && board[1][2] == p){
+			return true;
+		}else if(board[2][0] == p && board[2][1]==p && board[2][2] == p){
+			return true;
+		}
+		//column wins
+		else if(board[0][0] == p && board[1][0]==p && board[2][0] == p){
+			return true;
+		}else if(board[0][1] == p && board[1][1]==p && board[2][1] == p){
+			return true;
+		}else if(board[0][2] == p && board[1][2]==p && board[2][2] == p){
+			return true;
+		}
+		//diag wins
+		else if(board[0][0] == p && board[1][1]==p && board[2][2] == p){
+			return true;
+		}else if(board[0][2] == p && board[1][1]==p && board[2][0] == p){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public boolean isFull()
 	{
-		return false;
+		int num = numTurns();
+		return num == 9;
 	}
 
 	public boolean isCat()
 	{
-		return false;	
+			return ((!isWinner('X') && !isWinner('O')) && numTurns() == 9);
 	}
 
 	public boolean isValid( int r, int c )
@@ -67,6 +91,22 @@ public class TicTacToeClass
 	// Modifiers
 	public void playMove( char p, int r, int c )
 	{
+			board[r][c] = p;
+			turns += 1;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
